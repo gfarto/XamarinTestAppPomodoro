@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="Pomodoro.RootPage"
+                  xmlns:viewModels="clr-namespace:Pomodoro.ViewModels"
+                  xmlns:views="clr-namespace:Pomodoro.Views"
+                  xmlns:pages="clr-namespace:Pomodoro" >
+
+    <MasterDetailPage.BindingContext>
+        <viewModels:RootPageViewModel />
+    </MasterDetailPage.BindingContext>
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Pomodoro" IconImageSource="icons8-menu-40.png">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition />
+                    <RowDefinition Height="65" />
+                </Grid.RowDefinitions>
+
+                <Grid BackgroundColor="#545454" Grid.Row="0">
+                    <Image Source="runid.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="5, 50, 5, 5" />
+                </Grid>
+
+                <ListView ItemsSource="{Binding MenuItems}" Grid.Row="1" BackgroundColor="Transparent"
+                          SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"/>
+
+                <Image Source="runid.png" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Margin="5, 5, 5, 15" />
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <!--<pages:RootPageDetail />-->
+                <views:PomodoroPage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
